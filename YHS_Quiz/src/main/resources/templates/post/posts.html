@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">  
+  <head>  
+  <title>게시판</title>  
+  </head>  
+  <body>  
+    <h1>게시판</h1>  
+    <table>  
+        <tr>  
+            <th>제목</th>  
+            <th>작성자</th>
+            <th>작성일</th>  
+        </tr>  
+        <tr th:each="post : ${posts}">
+            <td>
+             <a th:href="@{/post/read/{id}(id=${post.id})}" th:text="${post.title}"></a>
+            </td>  
+            <td th:text="${post.author}"></td>
+            <td th:text="${post.localDateTime}">  
+             <td>
+            <a th:href="@{/post/edit/{id}(id=${post.id})}" >수정</a>
+            <a th:href="@{/post/delete/{id}(id=${post.id})}">삭제</a> 
+            </td>
+        </tr>  
+    </table>
+    <a th:href="@{/post/create}">게시물 생성</a> 
+  </body>  
+</html>  

@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">  
+  <head>  
+  <title>게시판</title>  
+  </head>  
+  <body>  
+    <h1>게시판</h1>
+    <form method="post">  
+    <table>  
+        <tr>  
+            <th>제목</th>    
+             <td><input name="title"></td>
+        </tr>
+        <tr> 
+            <th>작성자</th><td><input name="author"></td>
+        </tr>
+        <tr>
+            <th>내용</th><td><textarea name="content"></textarea></td> 
+        </tr>
+        <tr>
+        <td><input type="submit" value="게시물 작성"></td>
+        </tr>   
+    </table>
+    </form>
+    <a th:href="@{/post/posts}">게시물 리스트</a>
+  </body>  
+</html>  

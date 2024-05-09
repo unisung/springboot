@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">  
+  <head>  
+  <title>게시판</title>  
+  </head>  
+  <body>  
+    <h1>게시판</h1>
+    <form method="post" th:action="@{/post/edit/{id}(id=*{id})}" 
+               th:object="${post}"> 
+    <table>  
+        <tr>  
+            <th>제목</th>    
+             <td><input name="title" th:value="*{title}" 
+                  style="width:300px;" /></td>
+        </tr>
+        <tr> 
+            <th>작성자</th>
+            <td><input name="author" th:value="*{author}" 
+                  style="width:300px;" />
+                  </td>
+        </tr>
+        <tr>
+            <th>내용</th><td><textarea name="content" th:text="*{content}" 
+                  style="width:300px;"></textarea></td> 
+        </tr>  
+    </table>
+    <input type="submit" value="게시물 수정">
+    </form>
+   <a th:href="@{/post/posts}">게시물 리스트</a>
+  </body>  
+</html>  
