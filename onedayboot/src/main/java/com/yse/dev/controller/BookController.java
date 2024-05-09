@@ -42,22 +42,22 @@ public class BookController {
 	@GetMapping("/book/read/{bookId}")
 	public ModelAndView read(@PathVariable("bookId") Integer bookId) {
 		ModelAndView  mav= new ModelAndView();
-		System.out.println("1");
+		
 		try {
 			BookReadResponseDTO bookReadResponseDTO 
 			   = this.bookService.read(bookId); 
 			System.out.println(bookReadResponseDTO.getBookId());
 			mav.addObject("bookReadResponseDTO", bookReadResponseDTO);
 			mav.setViewName("book/read");
-			System.out.println("2");
+			
 		}catch(NoSuchElementException ex) {
-			System.out.println("3");
+			
 			mav.setStatus(HttpStatus.UNPROCESSABLE_ENTITY);  
 	        mav.addObject("message", "책 정보가 없습니다.");  
 	        mav.addObject("location", "/book");   
 	        mav.setViewName("common/error/422");  
 		}
-		System.out.println("4");
+		
 		return mav;
 	}
 	
@@ -123,7 +123,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/book/delete")
-	public String delete(Integer bookId) throws NoSuchElementException{
+	public String delete(@RequestParam("bookId") Integer bookId) throws NoSuchElementException{
 		this.bookService.delete(bookId);
 		return "redirect:/book/list";
 	}

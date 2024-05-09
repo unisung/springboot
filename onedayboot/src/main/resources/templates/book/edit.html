@@ -10,7 +10,8 @@
                   style="width:300px;" /></p>    
   <p>가격 : <input type="text" name="price" th:value="*{price}" 
                   style="width:300px;" /></p>  
-  <p><input type="submit" value="저장" />  
+  <p><input type="submit" value="저장" /> 
+  <a th:href="@{/book/list}" th:text="리스트"></a>  
   </form>  
   </body>  
 </html>  

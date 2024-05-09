@@ -1,6 +1,8 @@
 package com.yse.dev.book.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.yse.dev.book.entity.Book;
 
@@ -14,12 +16,18 @@ public class BookReadResponseDTO {
 	private String title;  
 	private Integer price;  
 	private LocalDateTime insertDateTime;
+	private List<BookLogReadResponseDTO> bookLogs;
 	
 	public BookReadResponseDTO fromBook(Book book) {
 		this.bookId = book.getBookId();
 		this.title = book.getTitle();
 		this.price = book.getPrice();
 		this.insertDateTime = book.getInsertDateTime();
+		
+		this.bookLogs = book.getBookLogList()
+				            .stream()
+				            .map(bookLog -> BookLogReadResponseDTO.BookLogFactory(bookLog))
+				            .collect(Collectors.toList());
 		return this;
 	} 
 	

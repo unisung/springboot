@@ -11,7 +11,9 @@
         </tr>  
         <tr th:each="book : ${books}">  
             <td th:text="${book.bookId}"></td>  
-            <td th:text="${book.title}"></td>  
+            <td>
+            <a th:href="@{/book/edit/{id}(id=${book.bookId})}" th:text="${book.title}"></a> 
+            </td>  
 
         </tr>  
     </table>  
